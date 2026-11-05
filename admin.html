@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ผู้ดูแลระบบ — ClearTalk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="larger-text.css">
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f7f8fc;color:#20243a;font:14px 'DM Sans','Noto Sans Thai',sans-serif}
+    .sidebar{width:246px;position:fixed;inset:0 auto 0 0;background:#fff;border-right:1px solid #edf0f5;padding:28px 18px;display:flex;flex-direction:column;z-index:5}
+    .brand{display:flex;align-items:center;gap:11px;padding:2px 12px 34px;font-size:19px;font-weight:800}.brand-mark{width:35px;height:35px;border-radius:12px;background:linear-gradient(145deg,#8876f5,#5946ca);color:#fff;display:grid;place-items:center}
+    .brand small{display:block;font-size:10px;color:#969bb0;font-weight:500;margin-top:1px}.nav-label{font-size:10px;color:#a0a5b7;font-weight:700;letter-spacing:1px;padding:0 13px;margin:8px 0 10px}.nav{display:grid;gap:5px}.nav a{border:0;background:transparent;text-align:left;padding:11px 13px;border-radius:11px;color:#747b91;display:flex;gap:12px;align-items:center;font-weight:500;text-decoration:none}.nav a:hover,.nav a.active{background:#f0edff;color:#6856dc}.ico{width:18px;text-align:center;font-size:16px}.side-bottom{margin-top:auto}.profile{display:flex;align-items:center;gap:10px;padding:12px 7px 0;border-top:1px solid #edf0f5}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#e8e4ff;color:#6152c6;font-weight:700;flex:none}.profile strong{font-size:12px;display:block}.profile small{font-size:10px;color:#81889d}.logout{margin-left:auto;border:1px solid #edf0f5;background:#fff;color:#656d83;border-radius:8px;padding:7px;font-size:10px;cursor:pointer}
+    .main{margin-left:246px;min-height:100vh}.topbar{height:74px;background:#ffffffd9;border-bottom:1px solid #edf0f5;display:flex;align-items:center;justify-content:space-between;padding:0 38px;position:sticky;top:0;z-index:4}.crumb{color:#81889d;font-size:12px}.content{max-width:1250px;margin:auto;padding:35px 38px 60px}.page-head{margin-bottom:26px}.eyebrow{font-size:10px;color:#6856dc;font-weight:700;letter-spacing:1.3px;margin-bottom:8px}.page-head h1{font-size:25px;margin:0 0 7px}.page-head p{font-size:12px;color:#81889d;margin:0}.card{background:#fff;border:1px solid #eff0f5;border-radius:16px;padding:20px;box-shadow:0 14px 40px #30395c0a;overflow:auto}.card h2{font-size:15px;margin:0 0 5px}.muted{color:#81889d;font-size:12px}table{width:100%;border-collapse:collapse;min-width:600px;margin-top:14px}th,td{text-align:left;padding:12px;border-bottom:1px solid #edf0f5;font-size:12px}th{color:#81889d;font-weight:600}.error{color:#bd4d4d}.mobile-menu{display:none}
+    @media(max-width:680px){.sidebar{width:250px;transform:translateX(-105%);transition:.25s;box-shadow:15px 0 35px #20243a12}.sidebar.open{transform:none}.main{margin:0}.mobile-menu{display:inline-grid;place-items:center;border:0;background:white;color:#626981;font-size:18px}.topbar{height:62px;padding:0 16px}.content{padding:24px 15px 45px}}
+  </style>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><div class="brand-mark">✳</div><div>ClearTalk<small>SAFE WORDS, BETTER SPACE</small></div></div>
+    <div class="nav-label">เมนูหลัก</div>
+    <nav class="nav">
+      <a class="active" href="/admin.html"><span class="ico">▦</span>ภาพรวมผู้ดูแล</a>
+      <a href="/index.html?page=check"><span class="ico">⌕</span>ตรวจสอบข้อความ</a>
+      <a href="/index.html?page=history"><span class="ico">◷</span>ประวัติการตรวจสอบ</a>
+    </nav>
+    <div class="nav-label" style="margin-top:24px">ผู้ดูแลระบบ</div>
+    <nav class="nav">
+      <a href="/index.html?page=manage"><span class="ico">⚙</span>จัดการคำไม่เหมาะสม</a>
+      <a href="/index.html?page=settings"><span class="ico">☷</span>ตั้งค่าระบบ</a>
+    </nav>
+    <div class="side-bottom"><div class="profile"><div class="avatar">A</div><div><strong id="profile-name">ผู้ดูแลระบบ</strong><small>แอดมิน</small></div><button class="logout" id="logout">ออกจากระบบ</button></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')" aria-label="เปิดเมนู">☰</button><div class="crumb">ClearTalk　/　ภาพรวมผู้ดูแล</div></div><div class="muted">ADMIN</div></header>
+    <div class="content">
+      <div class="page-head"><div class="eyebrow">ADMINISTRATION</div><h1>ภาพรวมผู้ดูแลระบบ</h1><p id="welcome" class="muted">จัดการสมาชิกและการตั้งค่าของระบบ</p></div>
+      <section class="card"><h2>บัญชีสมาชิก</h2><p class="muted">รายชื่อบัญชีที่สมัครในระบบ</p><div id="status" class="muted">กำลังโหลดข้อมูล…</div><table id="users" hidden><thead><tr><th>ชื่อที่แสดง</th><th>อีเมล</th><th>สิทธิ์</th><th>วันที่สมัคร</th></tr></thead><tbody></tbody></table></section>
+    </div>
+  </main>
+  <script>
+    const statusBox=document.querySelector('#status');
+    fetch('/api/session').then(async r=>{if(!r.ok)throw Error('กรุณาเข้าสู่ระบบ');return r.json()})
+      .then(({user})=>{if(user.role!=='admin'){location.href='/index.html';return}document.querySelector('#welcome').textContent=`ยินดีต้อนรับ ${user.display_name} · รายชื่อบัญชีสมาชิก`;document.querySelector('#profile-name').textContent=user.display_name;return fetch('/api/admin/users')})
+      .then(async r=>{if(!r)return;if(!r.ok)throw Error('ไม่มีสิทธิ์ดูรายชื่อสมาชิก');return r.json()})
+      .then(data=>{if(!data)return;const body=document.querySelector('#users tbody');body.innerHTML=data.users.map(u=>`<tr><td>${esc(u.display_name)}</td><td>${esc(u.email)}</td><td>${u.role==='admin'?'ผู้ดูแล':'ผู้ใช้'}</td><td>${new Date(u.created_at*1000).toLocaleString('th-TH')}</td></tr>`).join('');document.querySelector('#users').hidden=false;statusBox.textContent=`สมาชิกทั้งหมด ${data.users.length} บัญชี`})
+      .catch(e=>{statusBox.textContent=e.message;statusBox.className='error'});
+    function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+    document.querySelector('#logout').onclick=async event=>{const button=event.currentTarget;button.disabled=true;try{const response=await fetch('/api/logout',{method:'POST',credentials:'same-origin'});if(!response.ok)throw Error(`เซิร์ฟเวอร์ตอบกลับ ${response.status}`);location.replace('login.html')}catch(error){statusBox.textContent=`ออกจากระบบไม่สำเร็จ: ${error.message} กรุณาลองอีกครั้ง`;statusBox.className='error';button.disabled=false}};
+  </script>
+</body>
+</html>

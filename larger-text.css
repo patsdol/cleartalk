@@ -1,0 +1,39 @@
+/* Readability pass: raise the small labels and supporting copy across ClearTalk. */
+body{font-size:16px}
+.nav button{font-size:14px}
+.nav-label{font-size:11px}
+.crumb{font-size:13px}
+.top-user{font-size:13px}
+.page-head h1{font-size:28px}
+.page-head p{font-size:14px;line-height:1.65}
+.eyebrow{font-size:11px}
+.button{font-size:13px}
+.card{padding:21px}
+.stat-top{font-size:13px}
+.stat-value{font-size:28px}
+.stat-foot{font-size:12px;line-height:1.5}
+.card-title h3,.panel h3{font-size:16px}
+.card-title p,.panel-sub{font-size:12px;line-height:1.6}
+.table th{font-size:11px}
+.table td{font-size:12px;line-height:1.5}
+.status{font-size:11px}
+.select,.search{font-size:12px}
+.check-chip{font-size:11px}
+.input-foot{font-size:11px}
+.result-text{font-size:13px;line-height:1.8}
+.result-head strong{font-size:13px}
+.tag{font-size:11px}
+.aside-card h4{font-size:13px}
+.tip{font-size:12px;line-height:1.7}
+.activity-row{font-size:12px}
+.pagination{font-size:11px}
+.auth{font-size:16px}
+.auth h1{font-size:25px}
+.intro{font-size:13px}
+.field label{font-size:12px}
+.field input{font-size:14px}
+.submit{font-size:14px}
+.switch{font-size:12px}
+.notice{font-size:12px}
+.fine{font-size:10px}
+@media(max-width:680px){.page-head h1{font-size:23px}.page-head p{font-size:12px}.stat-top{font-size:12px}.stat-foot{font-size:11px}.table td{font-size:11px}}
