@@ -1,0 +1,79 @@
+/* Shared phone layout for ClearTalk pages. */
+@media (max-width: 680px) {
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { max-width: 100%; overflow-x: hidden; }
+  img, svg, video, canvas { max-width: 100%; }
+  input, select, textarea, button { max-width: 100%; }
+
+  #sidebar.sidebar {
+    width: min(280px, 85vw);
+    max-height: 100vh;
+    max-height: 100dvh;
+    overflow-y: auto;
+    padding: 18px 14px calc(18px + env(safe-area-inset-bottom));
+    z-index: 30;
+  }
+  .main { min-width: 0; }
+  .topbar {
+    gap: 8px;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  .topbar > div:first-child { min-width: 0; gap: 8px !important; }
+  .mobile-menu {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 10px;
+    flex: 0 0 42px;
+    touch-action: manipulation;
+  }
+  .crumb { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .top-actions { min-width: 0; gap: 6px !important; }
+  .top-actions button { min-width: 40px; min-height: 40px; }
+  .top-user { min-width: 0; gap: 6px; }
+  .top-user > span:not(:last-child) {
+    max-width: 27vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .content {
+    width: 100%;
+    max-width: 100%;
+    padding: 22px 14px 40px !important;
+  }
+  .page-head {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .page-head > .button { width: 100%; justify-content: center; }
+  .grid.stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .dashboard-grid, .workspace { grid-template-columns: minmax(0, 1fr) !important; }
+  .workspace-aside { grid-template-columns: minmax(0, 1fr) !important; }
+  .card, .panel, .aside-card, .table-card, .auth-card, .auth {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .table-card, .card {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table { min-width: 560px; }
+  .filterbar { align-items: stretch; }
+  .filterbar .search { min-width: 0; width: 100%; flex: 1 1 100%; }
+  .filterbar select { min-height: 44px; flex: 1 1 calc(50% - 8px); }
+  textarea { width: 100%; min-height: 150px; }
+  .field input, .field textarea, .search, select { min-height: 44px; font-size: 16px; }
+  .button, .btn, .submit { min-height: 42px; }
+  .donut-wrap, .chart-legend { flex-wrap: wrap; }
+  .pagination { flex-wrap: wrap; gap: 8px; }
+  .wrap { padding-left: 16px; padding-right: 16px; }
+  .top { gap: 8px; }
+  .links { flex-wrap: wrap; justify-content: flex-end; }
+  .auth-shell { padding: 18px 12px; }
+  .auth-card, .auth { padding: 22px 18px; }
+}

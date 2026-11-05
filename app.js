@@ -5,7 +5,8 @@
 (() => {
   'use strict';
   const KEY = 'cleartalk.v1';
-  const defaults = {records, words};
+  let recordsStorageKey = null;
+  const defaults = {records: [], words};
   function addBuiltInWords(existing) {
     const merged = Array.isArray(existing) ? [...existing] : [];
     const seen = new Set(merged.filter(w => Array.isArray(w) && w[0]).map(w => String(w[0]).trim().toLocaleLowerCase('th')));
@@ -15,17 +16,29 @@
     }
     return merged;
   }
+  function restoreUserRecords(user) {
+    recordsStorageKey = user?.user_id ? `${KEY}.user.${user.user_id}.records` : null;
+    if (!recordsStorageKey) return [];
+    try {
+      const saved = JSON.parse(localStorage.getItem(recordsStorageKey) || '[]');
+      return Array.isArray(saved) ? saved.filter(row => Array.isArray(row) && row.length >= 5) : [];
+    } catch { return []; }
+  }
+
   let data;
   window.clearTalkIsAdmin = false;
   try { data = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { data = null; }
   data = data && Array.isArray(data.records) && Array.isArray(data.words) ? data : defaults;
   records.splice(0, records.length, ...data.records);
   words.splice(0, words.length, ...addBuiltInWords(data.words));
-  try { localStorage.setItem(KEY, JSON.stringify({records, words})); } catch {}
+  try { localStorage.setItem(KEY, JSON.stringify({records: [], words})); } catch {}
   function save() {
     const settings = (() => { try { return JSON.parse(localStorage.getItem('cleartalk.settings.v1') || '{}'); } catch { return {}; } })();
     const state = {records, words, settings};
-    try { localStorage.setItem(KEY, JSON.stringify({records, words})); }
+    try {
+      localStorage.setItem(KEY, JSON.stringify({records: window.clearTalkIsAdmin ? records : [], words}));
+      if (recordsStorageKey) localStorage.setItem(recordsStorageKey, JSON.stringify(records));
+    }
     catch { showToast('บันทึกข้อมูลไม่สำเร็จ พื้นที่จัดเก็บอาจเต็ม'); }
     clearTimeout(window._dbSaveTimer);
     window._dbSaveTimer = setTimeout(() => {
@@ -70,14 +83,13 @@
       const role = document.querySelector('.profile small');
       if (role) role.textContent = window.clearTalkIsAdmin ? 'ผู้ดูแลระบบ' : 'ผู้ใช้';
     }
-    if (state.words.length || (state.user?.role === 'admin' && state.records.length)) {
-      // Regular accounts receive no server-side history, so keep their local records.
-      if (state.user?.role === 'admin') records.splice(0, records.length, ...state.records);
-      words.splice(0, words.length, ...addBuiltInWords(state.words));
-      save();
+    if (state.user?.role === 'admin') {
+      records.splice(0, records.length, ...state.records);
     } else {
-      save();
+      records.splice(0, records.length, ...restoreUserRecords(state.user));
     }
+    if (state.words.length) words.splice(0, words.length, ...addBuiltInWords(state.words));
+    save();
     if (state.settings && Object.keys(state.settings).length) {
       localStorage.setItem('cleartalk.settings.v1', JSON.stringify(state.settings));
     }
